@@ -63,11 +63,14 @@ module RequirejsHelper
           # and in the build_config.
           run_config['paths'] = paths
         end
+
+        # Generate require config which has {baseUrl: "/assets", paths: {order: "vendor/requirejs/order"}}
         html.concat <<-HTML
         <script>var require = #{run_config.to_json};</script>
         HTML
       end
 
+      # Generate `<script data-main="/assets/application.js" src="/assets/require.js"></script>`
       html.concat <<-HTML
       <script #{_requirejs_data(name, &block)} src="#{_javascript_path 'require-jquery.js'}"></script>
       HTML

@@ -13,11 +13,16 @@ module Requirejs::Rails
       super
       self.manifest = nil
 
+      # The build process uses the Asset Pipeline to assemble assets for the r.js build. 
+      # By default, assets ending in .js, .html, and .txt will be made available to the build.
       self.logical_asset_filter = [/\.js$/,/\.html$/,/\.txt$/]
+
       self.tmp_dir = Rails.root + 'tmp'
       self.bin_dir = Pathname.new(__FILE__+'/../../../../bin').cleanpath
 
       self.source_dir = self.tmp_dir + 'assets'
+
+      # The build will go in here
       self.target_dir = Rails.root + 'public/assets'
       self.rjs_path   = self.bin_dir+'r.js'
 

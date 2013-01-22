@@ -9,7 +9,7 @@ module Requirejs
       ### Configuration setup
       config.before_configuration do |app|
         config.requirejs = Requirejs::Rails::Config.new
-        config.requirejs.precompile = [/require\.js$/]
+        config.requirejs.precompile = [/require-jquery\.js$/] #[/require\.js$/]
 
         # Location of the user-supplied config parameters, which will be
         # merged with the default params.  It should be a YAML file with
